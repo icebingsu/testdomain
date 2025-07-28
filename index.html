@@ -1,11 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hiệu ứng chữ chạy</title>
+    <style>
+        /* --- CSS BẮT ĐẦU TỪ ĐÂY --- */
+        body {
+            background-color: #111; /* Nền tối để làm nổi bật chữ */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Ẩn thanh cuộn */
+        }
+
+        .running-text-container {
+            width: 100%;
+            overflow: hidden; /* Đảm bảo chữ không tràn ra ngoài */
+            white-space: nowrap; /* Giữ chữ trên một dòng */
+        }
+
+        .running-text {
+            font-size: 5rem; /* Kích thước chữ, bạn có thể thay đổi */
+            font-weight: bold;
+            font-family: 'Arial', sans-serif; /* Font chữ */
+            
+            /* Hiệu ứng màu gradient cho chữ */
+            background: linear-gradient(90deg, #ff00de, #00ddff, #ffdd00, #ff00de);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% 100%;
+
+            /* Animation */
+            animation: 
+                run-across 10s linear infinite, /* Chữ chạy ngang */
+                color-change 5s linear infinite; /* Chữ đổi màu */
+        }
+        /* Keyframes cho hiệu ứng chạy ngang */
+        @keyframes run-across {
+            0% {
+                transform: translateX(100vw); /* Bắt đầu từ bên phải màn hình */
+            }
+            100% {
+                transform: translateX(-100%); /* Kết thúc ở bên trái */
+            }
+        }
+        
+        /* Keyframes cho hiệu ứng đổi màu */
+        @keyframes color-change {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 200% 50%;
+            }
+        }
+        /* --- CSS KẾT THÚC TẠI ĐÂY --- */
+    </style>
 </head>
 <body>
-    
-</body>
+    <div class="running-text-container">
+        <div class="running-text">
+            Kim Hùng đẹp trai
+        </div>
+    </div>
+    </body>
 </html>
